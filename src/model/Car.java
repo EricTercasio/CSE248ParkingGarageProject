@@ -12,7 +12,7 @@ public class Car implements Vehicle {
 
     @Override
     public String getLicensePlate() {
-        return null;
+        return licensePlate;
     }
 
     @Override

@@ -15,6 +15,13 @@ public class TicketBag {
     public void add(Ticket ticket){
         tickets.add(ticket);
     }
+    public void remove(Ticket ticket){
+        for(int i = 0; i < tickets.size(); i++){
+            if(tickets.get(i).equals(ticket)){
+                tickets.remove(ticket);
+            }
+        }
+    }
     public Ticket findByLicense(String license){
         for (int i = 0; i < tickets.size(); i++){
             if(tickets.get(i).getCar().getLicensePlate().equals(license)){

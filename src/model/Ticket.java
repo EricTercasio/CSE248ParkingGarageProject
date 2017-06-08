@@ -10,6 +10,7 @@ public class Ticket {
 
     public Ticket(ParkingSpace parkingSpace, Car car){
         this.parkingSpace = parkingSpace;
+        this.car = car;
 
     }
 
@@ -25,12 +26,16 @@ public class Ticket {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
     public void valetPark(){
         totalPrice = totalPrice + 5;
         parkingSpace.park();
+    }
+    public void calculateTotalPrice(){
+        if (parkingSpace instanceof RegularParkingSpace){
+            totalPrice = parkingSpace.getHoursParked() * ((RegularParkingSpace) parkingSpace).getHourlyRate();
+        }else if(parkingSpace instanceof HandicappedParkingSpace){
+            totalPrice = parkingSpace.getHoursParked() * ((HandicappedParkingSpace) parkingSpace).getHourlyRate();
+        }
     }
     public Car getCar(){
         return car;

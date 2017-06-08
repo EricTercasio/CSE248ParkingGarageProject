@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Kitcatski on 6/7/2017.
@@ -14,6 +15,15 @@ public class ParkingSpaceBag {
     }
     public void add(ParkingSpace parkingSpace){
         parkingSpaces.add(parkingSpace);
+        selectionSort();
+
+    }
+    public void remove(ParkingSpace parkingSpace){
+        for(int i = 0; i < parkingSpaces.size(); i++){
+            if(parkingSpaces.get(i).equals(parkingSpace)){
+                parkingSpaces.remove(parkingSpace);
+            }
+        }
     }
     public void display(){
         for(int i = 0; i < parkingSpaces.size(); i++){
@@ -28,5 +38,21 @@ public class ParkingSpaceBag {
         }
         return null;
     }
+    public void selectionSort(){
+            int out;
+            int in;
+            int min;
+            for (out = 0; out < parkingSpaces.size() - 1; out++) {
+                min = out;
+                for(in = out + 1; in < parkingSpaces.size(); in++) {
+                    if(parkingSpaces.get(in).getParkingNumber() < parkingSpaces.get(min).getParkingNumber()) {
+                        min = in;
+                    }
+                }
+                Collections.swap(parkingSpaces,out,min);
+            }
+        }
 
-}
+    }
+
+
