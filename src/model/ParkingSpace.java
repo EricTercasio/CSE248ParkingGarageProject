@@ -1,46 +1,43 @@
 package model;
 
+
 /**
  * Created by Kitcatski on 6/6/2017.
  */
 public abstract class ParkingSpace {
+    private int parkingNumber;
+    private static int parkingNumberInt = 0;
     private boolean isParked;
-    private int amount;
-    private Ticket ticket;
+    private int hoursParked;
+
 
     public ParkingSpace(){
+        parkingNumber = parkingNumberInt++;
 
     }
-    public boolean carPark(Ticket ticket){
+    public int getParkingNumber(){
+        return parkingNumber;
+    }
+    public void park(){
         isParked = true;
-        return isParked;
     }
-    public Ticket unPark(){
+    public void unPark(int hours){
+        hoursParked = hours;
         isParked = false;
-        Ticket tempTicket = ticket;
-        ticket = null;
-        return tempTicket;
-
-    }
-    public int pay(int payment){
-        if (payment >= amount){
-            payment = payment - amount;
-            amount = 0;
-            return payment;
-        }else{
-            System.out.println("Not enough money");
-            return payment;
-        }
-
-    }
-    public int getAmount(){
-        return amount;
-    }
-    public void setAmount(int amount){
-        this.amount = amount;
     }
     public boolean isParked(){
         return isParked;
     }
+    public int getHoursParked(){
+        return hoursParked;
+    }
 
+    @Override
+    public String toString() {
+        return "ParkingSpace{" +
+                "parkingNumber=" + parkingNumber +
+                ", isParked=" + isParked +
+                ", hoursParked=" + hoursParked +
+                '}';
+    }
 }

@@ -11,8 +11,8 @@ public class Bus implements Vehicle{
     }
 
     @Override
-    public int getLicensePlate() {
-        return 0;
+    public String getLicensePlate() {
+        return null;
     }
 
     @Override

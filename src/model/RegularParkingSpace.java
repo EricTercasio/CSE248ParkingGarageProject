@@ -6,11 +6,20 @@ package model;
 public class RegularParkingSpace extends ParkingSpace {
     private int hourlyRate = 10;
 
-    public RegularParkingSpace(int hours) {
-        setAmount(hours * hourlyRate);
+    public RegularParkingSpace() {
+        super();
+
 
     }
     public int getHourlyRate(){
         return hourlyRate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "RegularParkingSpace{" +
+                "hourlyRate=" + hourlyRate +
+                '}';
     }
 }
