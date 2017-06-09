@@ -27,14 +27,34 @@ public class ParkingSpaceBag {
     }
     public void display(){
         for(int i = 0; i < parkingSpaces.size(); i++){
-            System.out.println(parkingSpaces.get(i).getParkingNumber());
+            System.out.println(parkingSpaces.get(i).toString());
         }
     }
     public ParkingSpace findByParkingNumber(int number){
         for (int i = 0; i < parkingSpaces.size();i++){
             if(parkingSpaces.get(i).getParkingNumber() == number){
+                remove(parkingSpaces.get(i));
                 return parkingSpaces.get(i);
+
             }
+        }
+        return null;
+    }
+    public RegularParkingSpace getRegularSpot(){
+        for (int i = 0; i < parkingSpaces.size(); i++){
+            if (parkingSpaces.get(i) instanceof RegularParkingSpace){
+                remove(parkingSpaces.get(i));
+                return (RegularParkingSpace) parkingSpaces.get(i);
+            }
+        }
+        return null;
+    }
+    public HandicappedParkingSpace getHandicappedSpot(){
+        for(int i = 0; i < parkingSpaces.size(); i++){
+            if(parkingSpaces.get(i) instanceof HandicappedParkingSpace){
+                return (HandicappedParkingSpace) parkingSpaces.get(i);
+            }
+
         }
         return null;
     }

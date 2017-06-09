@@ -6,12 +6,14 @@ package model;
 public class Ticket {
     private ParkingSpace parkingSpace;
     private double totalPrice;
-    private Car car;
+    private Vehicle vehicle;
+    private int ticketID;
+    private static int ticketIDint = 1000;
 
-    public Ticket(ParkingSpace parkingSpace, Car car){
+    public Ticket(ParkingSpace parkingSpace, Vehicle vehicle){
         this.parkingSpace = parkingSpace;
-        this.car = car;
-
+        this.vehicle = vehicle;
+        ticketID = ticketIDint++;
     }
 
     public ParkingSpace getParkingSpace() {
@@ -37,10 +39,12 @@ public class Ticket {
             totalPrice = parkingSpace.getHoursParked() * ((HandicappedParkingSpace) parkingSpace).getHourlyRate();
         }
     }
-    public Car getCar(){
-        return car;
+    public Vehicle getVehicle(){
+        return vehicle;
     }
-
+    public int getTicketID(){
+        return ticketID;
+    }
     @Override
     public String toString() {
         return "Ticket{" +

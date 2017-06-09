@@ -46,4 +46,12 @@ public class LoginPane {
     public Scene getScene(){
         return scene;
     }
+
+    public Button getCustomerButton() {
+        return customerButton;
+    }
+
+    public Button getManagerButton() {
+        return managerButton;
+    }
 }

@@ -24,10 +24,18 @@ public class TicketBag {
     }
     public Ticket findByLicense(String license){
         for (int i = 0; i < tickets.size(); i++){
-            if(tickets.get(i).getCar().getLicensePlate().equals(license)){
+            if(tickets.get(i).getVehicle().getLicensePlate().equals(license)){
                 return tickets.get(i);
             }
 
+        }
+        return null;
+    }
+    public Ticket findByTicketID(int id){
+        for(int i = 0; i < tickets.size();i++){
+            if (tickets.get(i).getTicketID() == id){
+                return tickets.get(i);
+            }
         }
         return null;
     }
