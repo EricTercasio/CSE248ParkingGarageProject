@@ -29,14 +29,14 @@ public class Ticket {
     }
 
     public void valetPark(){
-        totalPrice = totalPrice + 5;
+        totalPrice += totalPrice + 5;
         parkingSpace.park();
     }
     public void calculateTotalPrice(){
         if (parkingSpace instanceof RegularParkingSpace){
-            totalPrice = parkingSpace.getHoursParked() * ((RegularParkingSpace) parkingSpace).getHourlyRate();
+            totalPrice += parkingSpace.getHoursParked() * ((RegularParkingSpace) parkingSpace).getHourlyRate();
         }else if(parkingSpace instanceof HandicappedParkingSpace){
-            totalPrice = parkingSpace.getHoursParked() * ((HandicappedParkingSpace) parkingSpace).getHourlyRate();
+            totalPrice += parkingSpace.getHoursParked() * ((HandicappedParkingSpace) parkingSpace).getHourlyRate();
         }
     }
     public Vehicle getVehicle(){
@@ -51,6 +51,7 @@ public class Ticket {
                 "parkingSpace=" + parkingSpace +
                 ", totalPrice=" + totalPrice +
                 ", ticketID =" +ticketID +
+                " licensePlate = "+vehicle.getLicensePlate() +
                 '}';
     }
 }

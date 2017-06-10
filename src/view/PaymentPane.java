@@ -26,6 +26,7 @@ import javafx.scene.text.Text;
         private GridPane paymentPane;
         private VBox pane;
         private HBox paymentBox;
+        private HBox ticketBox;
         private HBox cardBox;
         private HBox cardFieldBox;
         private HBox nameBox;
@@ -43,6 +44,8 @@ import javafx.scene.text.Text;
         private Text cardType;
         private Text amountToPay;
         private Text paymentAmount;
+        private Text ticketText;
+        private Text ticketNumberText;
         private ComboBox<String> typeToPay;
         private Text nameOnCard;
         private TextField nameOnCardField;
@@ -65,6 +68,7 @@ import javafx.scene.text.Text;
             paymentPane = new GridPane();
             pane = new VBox();
             paymentBox = new HBox();
+            ticketBox = new HBox();
             cardBox = new HBox();
             cardFieldBox = new HBox();
             nameBox = new HBox();
@@ -91,6 +95,8 @@ import javafx.scene.text.Text;
             //Texts
             headerText = new Text("Complete Purchase");
             headerText.setFont(new Font("Century Gothic",40));
+            ticketText = new Text("Ticket #");
+            ticketNumberText = new Text();
             cardType = new Text("Credit Card Type");
             amountToPay = new Text("Amount to pay");
             paymentAmount = new Text();
@@ -136,6 +142,9 @@ import javafx.scene.text.Text;
             paymentBox.getChildren().addAll(amountToPay,paymentAmount);
             paymentBox.setAlignment(Pos.CENTER_LEFT);
             paymentBox.setSpacing(50);
+            ticketBox.getChildren().addAll(ticketText,ticketNumberText);
+            ticketBox.setAlignment(Pos.CENTER_LEFT);
+            ticketBox.setSpacing(50);
             cardBox.getChildren().addAll(cardType,typeToPay);
             cardBox.setAlignment(Pos.CENTER_LEFT);
             cardBox.setSpacing(40);
@@ -161,7 +170,7 @@ import javafx.scene.text.Text;
             imageBox.getChildren().addAll(visa,masterCard);
             imageBox.setAlignment(Pos.CENTER);
             //Add box's to pane
-            pane.getChildren().addAll(headerText,paymentBox,cardBox,nameBox,numberBox,expireBox,securityBox,buttonBox,imageBox);
+            pane.getChildren().addAll(headerText,ticketBox,paymentBox,cardBox,nameBox,numberBox,expireBox,securityBox,buttonBox,imageBox);
             pane.setAlignment(Pos.CENTER);
             pane.setSpacing(20);
             paymentPane.getChildren().add(pane);
@@ -207,6 +216,15 @@ import javafx.scene.text.Text;
 
         public Button getReturnButton() {
             return returnButton;
+        }
+        public Text getTicketNumberText(){
+            return ticketNumberText;
+        }
+        public ComboBox<String> getMonth(){
+            return month;
+        }
+        public ComboBox<String> getYear(){
+            return year;
         }
     }
 

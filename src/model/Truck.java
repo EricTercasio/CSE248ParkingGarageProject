@@ -12,11 +12,16 @@ public class Truck implements Vehicle {
 
     @Override
     public String getLicensePlate() {
-        return null;
+        return licensePlate;
     }
 
     @Override
     public void move() {
 
+    }
+
+    @Override
+    public String getVehicleType() {
+        return "Truck";
     }
 }

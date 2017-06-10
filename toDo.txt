@@ -1,0 +1,4 @@
+-----------TO DO-------------
+1. Check to see if license is already in use when buying ticket
+2. Manager window
+3. Receipt searchable by license and ticket #

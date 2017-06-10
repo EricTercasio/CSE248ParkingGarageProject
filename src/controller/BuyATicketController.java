@@ -25,7 +25,8 @@ public class BuyATicketController {
                 if(buyATicketPane.getMovementOptions().size() == 2) {
                     buyATicketPane.getMovementOptions().add("Car self-park feature");
                 }
-            }else if(buyATicketPane.getCarBox().getSelectionModel().isSelected(2) || buyATicketPane.getMovementOptions().get(2) != null){
+            }else if(buyATicketPane.getCarBox().getSelectionModel().isSelected(2) && buyATicketPane.getMovementOptions().get(2) != null){
+                if(buyATicketPane.getMovementOptions().size() == 3)
                 buyATicketPane.getMovementOptions().remove(2);
             }
         });
@@ -129,7 +130,8 @@ public class BuyATicketController {
                         }
                         regularParkingSpace.park();
                         ticketBag.add(ticket);
-                        parkingSpaceBag.display();
+                        //parkingSpaceBag.display();
+                        System.out.println(ticket.toString());
                         ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
                     else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(1)){
@@ -141,7 +143,9 @@ public class BuyATicketController {
                         }
                         handicappedParkingSpace.park();
                         ticketBag.add(ticket);
-                        parkingSpaceBag.display();
+                        //parkingSpaceBag.display();
+                        System.out.println(ticket.toString());
+                        ticketBag.display();
                         ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
                     else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(2)){

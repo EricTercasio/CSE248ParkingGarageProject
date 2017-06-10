@@ -7,7 +7,7 @@ package model;
 public abstract class ParkingSpace {
     private int parkingNumber;
     private static int parkingNumberInt = 0;
-    private boolean isParked;
+    private boolean isParked = false;
     private int hoursParked;
 
 

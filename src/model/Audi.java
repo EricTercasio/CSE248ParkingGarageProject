@@ -8,5 +8,8 @@ public class Audi extends Car {
     public Audi(String licensePlate) {
         super(licensePlate);
     }
+    public String getVehicleType(){
+        return "Audi";
+    }
 
 }

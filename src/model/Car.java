@@ -19,4 +19,9 @@ public class Car implements Vehicle {
     public void move() {
 
     }
+
+    @Override
+    public String getVehicleType() {
+        return "Car";
+    }
 }

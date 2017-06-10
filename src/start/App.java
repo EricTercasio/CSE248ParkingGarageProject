@@ -3,6 +3,7 @@ package start;
 import controller.BuyATicketController;
 import controller.CustomerController;
 import controller.LoginController;
+import controller.PaymentController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.HandicappedParkingSpace;
@@ -24,6 +25,7 @@ import static javafx.application.Application.launch;
     @Override
     public void start(Stage primaryStage) throws Exception {
         TicketBag ticketBag = new TicketBag();
+        TicketBag paidTicketBag = new TicketBag();
         ParkingSpaceBag parkingSpaceBag = new ParkingSpaceBag();
         for(int i = 0; i < 18; i++){
             parkingSpaceBag.add(new RegularParkingSpace());
@@ -37,8 +39,9 @@ import static javafx.application.Application.launch;
         Pane4Receipt pane4Receipt = new Pane4Receipt();
         Pane4Manager pane4Manager = new Pane4Manager();
         LoginController loginController = new LoginController(loginPane,customerPane,pane4Manager,primaryStage);
-        CustomerController customerController = new CustomerController(customerPane,buyATicketPane,pane4Receipt,paymentPane,loginPane,primaryStage);
+        CustomerController customerController = new CustomerController(customerPane,buyATicketPane,pane4Receipt,paymentPane,loginPane,ticketBag,paidTicketBag,primaryStage);
         BuyATicketController buyATicketController = new BuyATicketController(customerPane,buyATicketPane,ticketBag,parkingSpaceBag,primaryStage);
+        PaymentController paymentController = new PaymentController(paymentPane,customerPane,ticketBag,paidTicketBag,parkingSpaceBag,primaryStage);
         primaryStage.setScene(loginPane.getScene());
         primaryStage.show();
     }

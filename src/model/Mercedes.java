@@ -8,4 +8,7 @@ public class Mercedes extends Car{
     public Mercedes(String licensePlate) {
         super(licensePlate);
     }
+    public String getVehicleType(){
+        return "Mercedes";
+    }
 }

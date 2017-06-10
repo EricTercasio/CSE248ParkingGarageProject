@@ -3,6 +3,8 @@ package controller;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+import model.Ticket;
+import model.TicketBag;
 import view.*;
 
 import java.util.Optional;
@@ -12,7 +14,7 @@ import java.util.Optional;
  */
 public class CustomerController {
 
-    public CustomerController(CustomerPane customerPane, BuyATicketPane buyATicketPane, Pane4Receipt pane4Receipt, PaymentPane paymentPane, LoginPane loginPane, Stage stage){
+    public CustomerController(CustomerPane customerPane, BuyATicketPane buyATicketPane, Pane4Receipt pane4Receipt, PaymentPane paymentPane, LoginPane loginPane, TicketBag ticketBag,TicketBag paidTicketBag, Stage stage){
         customerPane.getBuyATicketButton().setOnAction(e->{
             stage.setScene(buyATicketPane.getScene());
         });
@@ -24,11 +26,58 @@ public class CustomerController {
             alert.setContentText("Please enter your license plate number : ");
             alert.setTitle("Confirm");
             Optional<String> result = alert.showAndWait();
-
-            stage.setScene(paymentPane.getScene());
+            System.out.println(result.get());
+            Ticket ticket = ticketBag.findByLicense(result.get());
+            if(ticket != null) {
+                TextInputDialog hoursAlert = new TextInputDialog();
+                hoursAlert.setContentText("Please enter the amount of hours you stayed : ");
+                alert.setTitle("Confirm");
+                Optional<String> hoursResult = hoursAlert.showAndWait();
+                if (hoursResult.get().matches("-?\\d+(.\\d+)?") && Integer.valueOf(hoursResult.get()) > 1) {
+                    ticket.getParkingSpace().unPark(Integer.valueOf(hoursResult.get()));
+                    System.out.println(ticket.getParkingSpace().getHoursParked());
+                    ticket.calculateTotalPrice();
+                    paymentPane.getPaymentAmount().setText(String.valueOf(ticket.getTotalPrice()));
+                    paymentPane.getTicketNumberText().setText(String.valueOf(ticket.getTicketID()));
+                    stage.setScene(paymentPane.getScene());
+                }else{
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setContentText("Hours entered is not valid or less than 1");
+                    errorAlert.showAndWait();
+                }
+            }else{
+                Alert noLicenseAlert = new Alert(Alert.AlertType.ERROR);
+                noLicenseAlert.setContentText("No ticket found");
+                noLicenseAlert.showAndWait();
+            }
         });
         customerPane.getViewReceiptButton().setOnAction(e->{
-            stage.setScene(pane4Receipt.getScene());
+            TextInputDialog textInputDialog = new TextInputDialog();
+            textInputDialog.setContentText("Please enter your ticket ID or license plate");
+            Optional<String> result = textInputDialog.showAndWait();
+            Ticket ticket = paidTicketBag.findByTicketID(Integer.parseInt(result.get()));
+            if(ticket == null){
+                ticket = paidTicketBag.findByLicense(result.get());
+                if(ticket == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("No tickets found or ticket car is currently parked");
+                    alert.showAndWait();
+            }else{
+                    pane4Receipt.getCarText().setText("Vehicle Type: " + ticket.getVehicle().getVehicleType());
+                    pane4Receipt.getLicenseText().setText("License Plate #: " + ticket.getVehicle().getLicensePlate());
+                    pane4Receipt.getTotalText().setText("Total amount : $" + ticket.getTotalPrice());
+                    pane4Receipt.getParkingSpotText().setText("Parking spot #: " + ticket.getParkingSpace());
+                    stage.setScene(pane4Receipt.getScene());
+
+            }
+            }else{
+                    pane4Receipt.getCarText().setText("Vehicle Type: " + ticket.getVehicle().getVehicleType());
+                    pane4Receipt.getLicenseText().setText("License Plate #: " + ticket.getVehicle().getLicensePlate());
+                    pane4Receipt.getTotalText().setText("Total amount : $" + ticket.getTotalPrice());
+                    pane4Receipt.getParkingSpotText().setText("Parking spot #: " + ticket.getParkingSpace());
+                stage.setScene(pane4Receipt.getScene());
+            }
+
         });
 
 

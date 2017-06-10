@@ -12,6 +12,9 @@ public class Demo {
         Ticket ticket1 = new Ticket(new RegularParkingSpace(), new Mercedes("123141"));
         ticket.valetPark();
         System.out.println(ticket.getTotalPrice());
+        TicketBag ticketBag = new TicketBag();
+        ticketBag.add(ticket);
+        System.out.println(ticketBag.findByLicense("81424").getParkingSpace());
 
 //        TicketBag ticketBag = new TicketBag();
 //        ticketBag.add(ticket);

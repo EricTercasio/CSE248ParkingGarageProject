@@ -8,4 +8,6 @@ public interface Vehicle {
     String getLicensePlate();
 
     void move();
+
+    String getVehicleType();
 }
