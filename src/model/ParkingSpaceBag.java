@@ -43,8 +43,9 @@ public class ParkingSpaceBag {
     public RegularParkingSpace getRegularSpot(){
         for (int i = 0; i < parkingSpaces.size(); i++){
             if (parkingSpaces.get(i) instanceof RegularParkingSpace){
+                RegularParkingSpace temp = (RegularParkingSpace) parkingSpaces.get(i);
                 remove(parkingSpaces.get(i));
-                return (RegularParkingSpace) parkingSpaces.get(i);
+                return temp;
             }
         }
         return null;
@@ -52,7 +53,9 @@ public class ParkingSpaceBag {
     public HandicappedParkingSpace getHandicappedSpot(){
         for(int i = 0; i < parkingSpaces.size(); i++){
             if(parkingSpaces.get(i) instanceof HandicappedParkingSpace){
-                return (HandicappedParkingSpace) parkingSpaces.get(i);
+                HandicappedParkingSpace temp = (HandicappedParkingSpace) parkingSpaces.get(i);
+                remove(parkingSpaces.get(i));
+                return temp;
             }
 
         }

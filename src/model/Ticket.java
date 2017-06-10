@@ -50,6 +50,7 @@ public class Ticket {
         return "Ticket{" +
                 "parkingSpace=" + parkingSpace +
                 ", totalPrice=" + totalPrice +
+                ", ticketID =" +ticketID +
                 '}';
     }
 }

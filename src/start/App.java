@@ -25,7 +25,7 @@ import static javafx.application.Application.launch;
     public void start(Stage primaryStage) throws Exception {
         TicketBag ticketBag = new TicketBag();
         ParkingSpaceBag parkingSpaceBag = new ParkingSpaceBag();
-        for(int i = 0; i == 18; i++){
+        for(int i = 0; i < 18; i++){
             parkingSpaceBag.add(new RegularParkingSpace());
         }
         parkingSpaceBag.add(new HandicappedParkingSpace());

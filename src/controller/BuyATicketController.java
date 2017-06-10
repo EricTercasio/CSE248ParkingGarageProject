@@ -47,69 +47,126 @@ public class BuyATicketController {
                     alert.setContentText("License plate is not filled in");
                     alert.showAndWait();
                 }else{
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(0)){
+                    if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(0)){
                         Audi audi = new Audi(buyATicketPane.getLicensePlateField().getText());
                         RegularParkingSpace regularParkingSpace = parkingSpaceBag.getRegularSpot();
                         Ticket ticket = new Ticket(regularParkingSpace,audi);
-                        //if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
-                                  //  ticket.valetPark();
-                               // }
-                        System.out.println(ticket.toString());
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
+                            ticket.valetPark();
+                        }
+                        regularParkingSpace.park();
+                        ticketBag.add(ticket);
                         parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
+
                             }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(1)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(1)){
                         Mercedes mercedes = new Mercedes(buyATicketPane.getLicensePlateField().getText());
                         RegularParkingSpace regularParkingSpace = parkingSpaceBag.getRegularSpot();
                         Ticket ticket = new Ticket(regularParkingSpace,mercedes);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        regularParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                       }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(2)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(2)){
                         Car car = new Car(buyATicketPane.getLicensePlateField().getText());
                         RegularParkingSpace regularParkingSpace = parkingSpaceBag.getRegularSpot();
                         Ticket ticket = new Ticket(regularParkingSpace,car);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        regularParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(0)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(0)){
                         Audi audi = new Audi(buyATicketPane.getLicensePlateField().getText());
-                        HandicappedParkingSpace handicappedParkingSpace = new HandicappedParkingSpace();
+                        HandicappedParkingSpace handicappedParkingSpace = parkingSpaceBag.getHandicappedSpot();
                         Ticket ticket = new Ticket(handicappedParkingSpace,audi);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        handicappedParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(1)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(1)){
                         Mercedes mercedes = new Mercedes(buyATicketPane.getLicensePlateField().getText());
-                        HandicappedParkingSpace handicappedParkingSpace = new HandicappedParkingSpace();
+                        HandicappedParkingSpace handicappedParkingSpace = parkingSpaceBag.getHandicappedSpot();
                         Ticket ticket = new Ticket(handicappedParkingSpace,mercedes);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        handicappedParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(2)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getCarBox().getSelectionModel().isSelected(2)){
                         Car car = new Car(buyATicketPane.getLicensePlateField().getText());
-                        HandicappedParkingSpace handicappedParkingSpace = new HandicappedParkingSpace();
+                        HandicappedParkingSpace handicappedParkingSpace = parkingSpaceBag.getHandicappedSpot();
                         Ticket ticket = new Ticket(handicappedParkingSpace,car);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        handicappedParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
-                    if (buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(1)){
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(1)){
                         Bus bus = new Bus(buyATicketPane.getLicensePlateField().getText());
-                        RegularParkingSpace regularParkingSpace = new RegularParkingSpace();
+                        RegularParkingSpace regularParkingSpace = parkingSpaceBag.getRegularSpot();
                         Ticket ticket = new Ticket(regularParkingSpace,bus);
-                        if(buyATicketPane.getMovementBox().getSelectionModel().isSelected(1)){
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
                             ticket.valetPark();
                         }
-                        System.out.println(ticket.toString());
+                        regularParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
+                    }
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(1)){
+                        Bus bus = new Bus(buyATicketPane.getLicensePlateField().getText());
+                        HandicappedParkingSpace handicappedParkingSpace = parkingSpaceBag.getHandicappedSpot();
+                        Ticket ticket = new Ticket(handicappedParkingSpace,bus);
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
+                            ticket.valetPark();
+                        }
+                        handicappedParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
+                    }
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(0) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(2)){
+                        Truck truck = new Truck(buyATicketPane.getLicensePlateField().getText());
+                        RegularParkingSpace regularParkingSpace = parkingSpaceBag.getRegularSpot();
+                        Ticket ticket = new Ticket(regularParkingSpace,truck);
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
+                            ticket.valetPark();
+                        }
+                        regularParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
+                    }
+                    else if (buyATicketPane.getParkBox().getSelectionModel().isSelected(1) && buyATicketPane.getVehicleBox().getSelectionModel().isSelected(2)){
+                        Truck truck = new Truck(buyATicketPane.getLicensePlateField().getText());
+                        HandicappedParkingSpace handicappedParkingSpace = parkingSpaceBag.getHandicappedSpot();
+                        Ticket ticket = new Ticket(handicappedParkingSpace,truck);
+                        if(buyATicketPane.getParkingSpotBox().getSelectionModel().isSelected(1)){
+                            ticket.valetPark();
+                        }
+                        handicappedParkingSpace.park();
+                        ticketBag.add(ticket);
+                        parkingSpaceBag.display();
+                        ticketConfirmation(String.valueOf(ticket.getTicketID()),String.valueOf(ticket.getParkingSpace().getParkingNumber()));
                     }
                 }
 
@@ -125,6 +182,12 @@ public class BuyATicketController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setContentText(input + " is not selected");
+        alert.showAndWait();
+    }
+    private void ticketConfirmation(String id, String parkingSpotNumber){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Purchase complete. Ticket ID number = " +id +" Parking spot # = "+parkingSpotNumber);
         alert.showAndWait();
     }
 }

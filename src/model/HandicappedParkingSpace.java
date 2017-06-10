@@ -13,4 +13,11 @@ public class HandicappedParkingSpace extends ParkingSpace {
     public int getHourlyRate(){
         return hourlyRate;
     }
+
+    @Override
+    public String toString() {
+        return "HandicappedParkingSpace{" +
+                "hourlyRate=" + hourlyRate +
+                '}';
+    }
 }
