@@ -13,6 +13,9 @@ public class BuyATicketController {
 
     public BuyATicketController(CustomerPane customerPane, BuyATicketPane buyATicketPane, TicketBag ticketBag, ParkingSpaceBag parkingSpaceBag, Stage stage) {
         buyATicketPane.getVehicleBox().setOnAction(e->{
+            if(!buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0) && buyATicketPane.getParkingSpotBox().getItems().size() == 3){
+                buyATicketPane.getParkingSpotBox().getItems().remove(2);
+            }
             if(buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0)){
                 buyATicketPane.getPane().getChildren().add(2,buyATicketPane.getCarHBox());
             }else if(buyATicketPane.getPane().getChildren().get(2).equals(buyATicketPane.getCarHBox()) && !buyATicketPane.getVehicleBox().getSelectionModel().isSelected(0)){
@@ -24,10 +27,12 @@ public class BuyATicketController {
             if(buyATicketPane.getCarBox().getSelectionModel().isSelected(0) || buyATicketPane.getCarBox().getSelectionModel().isSelected(1)){
                 if(buyATicketPane.getMovementOptions().size() == 2) {
                     buyATicketPane.getMovementOptions().add("Car self-park feature");
+                    System.out.println(buyATicketPane.getParkingSpotBox().getItems().size());
                 }
-            }else if(buyATicketPane.getCarBox().getSelectionModel().isSelected(2) && buyATicketPane.getMovementOptions().get(2) != null){
-                if(buyATicketPane.getMovementOptions().size() == 3)
-                buyATicketPane.getMovementOptions().remove(2);
+
+            }
+            if(buyATicketPane.getCarBox().getSelectionModel().isSelected(2) && buyATicketPane.getParkingSpotBox().getItems().size() == 3){
+                buyATicketPane.getParkingSpotBox().getItems().remove(2);
             }
         });
 
@@ -177,6 +182,7 @@ public class BuyATicketController {
 
             });
             buyATicketPane.getReturnButton().setOnAction(e -> {
+                reset(buyATicketPane);
                 stage.setScene(customerPane.getScene());
             });
 
@@ -193,5 +199,18 @@ public class BuyATicketController {
         alert.setTitle("Confirmation");
         alert.setContentText("Purchase complete. Ticket ID number = " +id +" Parking spot # = "+parkingSpotNumber);
         alert.showAndWait();
+    }
+    private void reset(BuyATicketPane buyATicketPane){
+
+        buyATicketPane.getVehicleBox().getSelectionModel().clearSelection();
+        buyATicketPane.getCarBox().getSelectionModel().clearSelection();
+        buyATicketPane.getParkingSpotBox().getSelectionModel().clearSelection();
+        buyATicketPane.getLicensePlateField().clear();
+        if(buyATicketPane.getCarBox().getSelectionModel().isSelected(0)){
+            buyATicketPane.getMovementOptions().remove(2);
+            System.out.println("!23412341");
+        }
+        buyATicketPane.getParkBox().getSelectionModel().clearSelection();
+
     }
 }

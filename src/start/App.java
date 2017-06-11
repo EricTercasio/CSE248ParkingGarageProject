@@ -1,9 +1,6 @@
 package start;
 
-import controller.BuyATicketController;
-import controller.CustomerController;
-import controller.LoginController;
-import controller.PaymentController;
+import controller.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.HandicappedParkingSpace;
@@ -42,6 +39,7 @@ import static javafx.application.Application.launch;
         CustomerController customerController = new CustomerController(customerPane,buyATicketPane,pane4Receipt,paymentPane,loginPane,ticketBag,paidTicketBag,primaryStage);
         BuyATicketController buyATicketController = new BuyATicketController(customerPane,buyATicketPane,ticketBag,parkingSpaceBag,primaryStage);
         PaymentController paymentController = new PaymentController(paymentPane,customerPane,ticketBag,paidTicketBag,parkingSpaceBag,primaryStage);
+        ReceiptController receiptController = new ReceiptController(customerPane,pane4Receipt,primaryStage);
         primaryStage.setScene(loginPane.getScene());
         primaryStage.show();
     }

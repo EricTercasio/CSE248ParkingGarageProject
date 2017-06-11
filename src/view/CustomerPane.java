@@ -5,13 +5,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Created by Eric on 6/9/2017.
  */
 public class CustomerPane {
     private HBox buttonBox;
-    private GridPane pane;
+    private VBox pane;
     private Scene scene;
     private Button buyATicketButton;
     private Button payATicketButton;
@@ -20,21 +21,20 @@ public class CustomerPane {
 
     public CustomerPane(){
         buttonBox = new HBox();
-        pane = new GridPane();
+        pane = new VBox();
         buyATicketButton = new Button("Buy a ticket");
         buyATicketButton.setPrefSize(120,120);
         payATicketButton = new Button("Pay a ticket");
         payATicketButton.setPrefSize(120,120);
-        viewReceiptButton = new Button("View past receipts");
+        viewReceiptButton = new Button("Past Receipts");
         viewReceiptButton.setPrefSize(120,120);
         backButton = new Button("Back");
         buttonBox.getChildren().addAll(buyATicketButton,payATicketButton,viewReceiptButton);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setSpacing(30);
-        pane.add(buttonBox,1,2);
-        pane.add(backButton,0,3);
+        pane.getChildren().addAll(buttonBox,backButton);
         pane.setAlignment(Pos.CENTER);
-        pane.setVgap(90);
+        pane.setSpacing(50);
         scene = new Scene(pane,600,600);
 
 
@@ -47,7 +47,7 @@ public class CustomerPane {
         return buttonBox;
     }
 
-    public GridPane getPane() {
+    public VBox getPane() {
         return pane;
     }
 

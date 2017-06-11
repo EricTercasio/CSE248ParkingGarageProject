@@ -63,13 +63,13 @@ public class BuyATicketPane {
 
         ObservableList<String> parkingSpotOptions =
                 FXCollections.observableArrayList(
-                        "Regular","Handicapped"
+                        "Regular (10/hr)","Handicapped (5/hr)"
                 );
         parkBox = new ComboBox(parkingSpotOptions);
 
         movementOptions =
                 FXCollections.observableArrayList(
-                        "Regular park","Valet"
+                        "Regular park","Valet (+$5)"
                 );
         parkingSpotBox = new ComboBox(movementOptions);
 

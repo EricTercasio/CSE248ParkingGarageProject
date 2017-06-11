@@ -9,6 +9,7 @@ public class Ticket {
     private Vehicle vehicle;
     private int ticketID;
     private static int ticketIDint = 1000;
+    private boolean valetPark = false;
 
     public Ticket(ParkingSpace parkingSpace, Vehicle vehicle){
         this.parkingSpace = parkingSpace;
@@ -31,6 +32,7 @@ public class Ticket {
     public void valetPark(){
         totalPrice += totalPrice + 5;
         parkingSpace.park();
+        valetPark = true;
     }
     public void calculateTotalPrice(){
         if (parkingSpace instanceof RegularParkingSpace){
@@ -44,6 +46,9 @@ public class Ticket {
     }
     public int getTicketID(){
         return ticketID;
+    }
+    public boolean isValetPark(){
+        return valetPark;
     }
     @Override
     public String toString() {

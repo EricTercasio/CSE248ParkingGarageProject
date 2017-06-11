@@ -14,7 +14,9 @@ public class ReceiptController {
             pane4Receipt.getTotalText().setText("");
             pane4Receipt.getTotalText().setText("");
             pane4Receipt.getCarText().setText("");
+
             stage.setScene(customerPane.getScene());
         });
+
     }
 }

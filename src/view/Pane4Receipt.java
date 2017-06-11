@@ -18,6 +18,7 @@ public class Pane4Receipt {
     private Text licenseText;
     private Text parkingSpotText;
     private Text totalText;
+    private Text valetParking;
     private Button backButton;
 
     public Pane4Receipt(){
@@ -28,8 +29,9 @@ public class Pane4Receipt {
         parkingSpotText = new Text("Parking Spot Number : ");
         totalText = new Text("Total : ");
         backButton = new Button("Return");
+        valetParking = new Text();
         pane = new VBox();
-        pane.getChildren().addAll(receiptText,carText,licenseText,parkingSpotText,totalText,backButton);
+        pane.getChildren().addAll(receiptText,carText,licenseText,parkingSpotText,valetParking,totalText,backButton);
         pane.setAlignment(Pos.CENTER);
         pane.setSpacing(15);
         scene = new Scene(pane,600,600);
@@ -97,5 +99,9 @@ public class Pane4Receipt {
 
     public void setBackButton(Button backButton) {
         this.backButton = backButton;
+    }
+
+    public Text getValetParking(){
+        return valetParking;
     }
 }
