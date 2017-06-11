@@ -29,6 +29,8 @@ import static javafx.application.Application.launch;
         }
         parkingSpaceBag.add(new HandicappedParkingSpace());
         parkingSpaceBag.add(new HandicappedParkingSpace());
+        System.out.println(parkingSpaceBag.findByParkingNumber(20));
+        parkingSpaceBag.display();
         LoginPane loginPane = new LoginPane();
         CustomerPane customerPane = new CustomerPane();
         PaymentPane paymentPane = new PaymentPane();
@@ -40,6 +42,7 @@ import static javafx.application.Application.launch;
         BuyATicketController buyATicketController = new BuyATicketController(customerPane,buyATicketPane,ticketBag,parkingSpaceBag,primaryStage);
         PaymentController paymentController = new PaymentController(paymentPane,customerPane,ticketBag,paidTicketBag,parkingSpaceBag,primaryStage);
         ReceiptController receiptController = new ReceiptController(customerPane,pane4Receipt,primaryStage);
+        ManagerController managerController = new ManagerController(pane4Manager,loginPane,ticketBag,parkingSpaceBag,primaryStage);
         primaryStage.setScene(loginPane.getScene());
         primaryStage.show();
     }

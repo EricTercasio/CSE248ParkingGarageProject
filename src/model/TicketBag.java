@@ -44,4 +44,7 @@ public class TicketBag {
             System.out.println(tickets.get(i));
         }
     }
+    public ArrayList<Ticket> getTickets(){
+        return tickets;
+    }
 }

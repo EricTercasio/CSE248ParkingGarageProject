@@ -27,7 +27,7 @@ public class ParkingSpaceBag {
     }
     public void display(){
         for(int i = 0; i < parkingSpaces.size(); i++){
-            System.out.println(parkingSpaces.get(i).toString());
+            System.out.println(parkingSpaces.get(i).getParkingNumber());
         }
     }
     public ParkingSpace findByParkingNumber(int number){
@@ -75,6 +75,9 @@ public class ParkingSpaceBag {
                 Collections.swap(parkingSpaces,out,min);
             }
         }
+    public ArrayList<ParkingSpace> getParkingSpaces(){
+        return parkingSpaces;
+    }
 
     }
 
