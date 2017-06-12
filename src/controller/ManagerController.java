@@ -42,10 +42,12 @@ public class ManagerController {
 
         });
         pane4Manager.getEmptySpotsButton().setOnAction(e->{
-            for(int i =0; i < parkingSpaceBag.getParkingSpaces().size(); i++){
-                pane4Manager.getEmptySpotsOptions().add("Spot # "+parkingSpaceBag.getParkingSpaces().get(i).getParkingNumber());
+            if(pane4Manager.getEmptySpotsOptions().isEmpty()) {
+                for (int i = 0; i < parkingSpaceBag.getParkingSpaces().size(); i++) {
+                    pane4Manager.getEmptySpotsOptions().add("Spot # " + parkingSpaceBag.getParkingSpaces().get(i).getParkingNumber());
+                }
+                pane4Manager.getPane().setCenter(pane4Manager.getSpotsHBox());
             }
-            pane4Manager.getPane().setCenter(pane4Manager.getSpotsHBox());
         });
         pane4Manager.getSpotsBox().setOnAction(e->{
             if(pane4Manager.getSpotsBox().getSelectionModel().getSelectedItem() != null){
@@ -61,6 +63,7 @@ public class ManagerController {
                 }
                 pane4Manager.getAvailibility().setText("Open");
             }
+
 
         });
 

@@ -33,7 +33,6 @@ public class ParkingSpaceBag {
     public ParkingSpace findByParkingNumber(int number){
         for (int i = 0; i < parkingSpaces.size();i++){
             if(parkingSpaces.get(i).getParkingNumber() == number){
-                remove(parkingSpaces.get(i));
                 return parkingSpaces.get(i);
 
             }

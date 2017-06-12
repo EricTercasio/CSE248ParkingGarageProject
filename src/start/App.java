@@ -29,8 +29,6 @@ import static javafx.application.Application.launch;
         }
         parkingSpaceBag.add(new HandicappedParkingSpace());
         parkingSpaceBag.add(new HandicappedParkingSpace());
-        System.out.println(parkingSpaceBag.findByParkingNumber(20));
-        parkingSpaceBag.display();
         LoginPane loginPane = new LoginPane();
         CustomerPane customerPane = new CustomerPane();
         PaymentPane paymentPane = new PaymentPane();
